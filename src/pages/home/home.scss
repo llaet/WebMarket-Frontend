@@ -1,3 +1,20 @@
 page-home {
 
+    #mainMenuTitle{
+        text-align: center;
+        font-family: cursive;
+        color: rgb(247, 169, 25);
+    }
+
+    #mainMenuImage{
+        width: 200px;
+        align-self: center;
+        margin: auto;
+        display: block;
+        padding: 10px;
+    }
+
+    #mainMenuEnterBtn{
+        background-color: rgb(247, 169, 25);
+    }
 }
