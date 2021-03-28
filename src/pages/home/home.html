@@ -5,11 +5,11 @@
   <form>
     <ion-item>
       <ion-label stacked>Email</ion-label>
-      <ion-input type="text" placeholder="Insira seu email"></ion-input>
+      <ion-input [(ngModel)]="credentials.email" name="email" type="text" placeholder="Insira seu email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Senha</ion-label>
-      <ion-input type="password" placeholder="Insira sua senha"></ion-input>
+      <ion-input [(ngModel)]="credentials.password" name="password" type="password" placeholder="Insira sua senha"></ion-input>
     </ion-item>
     <button id="mainMenuEnterBtn" ion-button block (click)="login()">Entrar</button>
   </form>
