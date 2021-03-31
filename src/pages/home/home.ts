@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController } from 'ionic-angular';
 import {CredentialsDTO} from '../../models/credentials.dto';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @IonicPage()
 @Component({
@@ -14,7 +15,10 @@ export class HomePage {
     password: ''
   };
 
-  constructor(public navCtrl: NavController, public menu: MenuController) {
+  constructor(
+    public navCtrl: NavController,
+    public menu: MenuController,
+    public auth: AuthenticationService) {
   }
 
   ionViewWillEnter() {
@@ -25,9 +29,12 @@ export class HomePage {
     this.menu.swipeEnable(true);
   }
 
+  //Performs login and it's validation if the data is valid
   login(){
-    console.log(this.credentials);
-    this.navCtrl.setRoot('CategoriesPage');
+    this.auth.authenticate(this.credentials)
+      .subscribe(response => {
+        console.log(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('CategoriesPage');
+      }, error => {});
   }
-
 }
