@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController } from 'ionic-angular';
-import {CredentialsDTO} from '../../models/credentials.dto';
+import { CredentialsDTO } from '../../models/credentials.dto';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @IonicPage()
@@ -10,7 +10,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class HomePage {
 
-  credentials : CredentialsDTO = {
+  credentials: CredentialsDTO = {
     email: '',
     password: ''
   };
@@ -30,11 +30,11 @@ export class HomePage {
   }
 
   //Performs login and it's validation if the data is valid
-  login(){
+  login() {
     this.auth.authenticate(this.credentials)
       .subscribe(response => {
-        console.log(response.headers.get('Authorization'));
+        this.auth.successfulLogin(response.headers.get('Authorization'));
         this.navCtrl.setRoot('CategoriesPage');
-      }, error => {});
+      }, error => { });
   }
 }
